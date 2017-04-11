@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html ng-app="sampleApp">
+<head>
+	<title>Hello World, AngularJS</title>
+	
+
+</head>
+<body ng-controller="sampleController" >
+	<input type="text" ng-model="fileName"/>
+	<br/>
+	
+	{{ fileName | trimName }}
+	
+	<script type="text/javascript" src="angular.js"></script>
+	<script type="text/javascript" src="app.js"></script>
+	
+</body>
+</html>

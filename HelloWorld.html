@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html ng-app="sampleApp">
+<head>
+	<title>Hello World, AngularJS</title>
+
+
+</head>
+<body ng-controller="sampleController"  >
+
+	{{testVariable}}
+
+	{{currentDate | date:'fullDate'}}
+
+	<div ng-bind="testVariable"></div>
+
+	<input type="text" ng-model="testVariable"/>
+
+	<script type="text/javascript" src="angular.js"></script>
+	<script type="text/javascript" src="app.js"></script>
+	<br/>
+	<input type="checkbox" ng-model="showFlag"/>
+	<div ng-show="showFlag">I am checked!</div>
+	<br/>
+	<input type="button" ng-click="clickMe()" value="Click Me!"/>
+	<div ng-show="clicked">I am clicked!</div>
+</body>
+</html>

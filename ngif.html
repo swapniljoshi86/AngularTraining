@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html ng-app="sampleApp">
+<head>
+	<title>Hello World, AngularJS</title>
+	
+
+</head>
+<body ng-controller="sampleController" ng-init="testVariable = 'Joshi Malhar'; testVariable = testVariable + ' Mandar';init();">
+	
+	
+	
+	child scope is not updated by default, if we change value in child textbox, it wont update parent textbox
+	and expression<br/>
+	<div>
+		parent: <input type="text" ng-model="testVariable"/>
+		<div ng-if="true">
+			<br/>
+			child: <input type="text" ng-model="testVariable"/>
+		</div>
+	</div>
+	
+	<br/>
+	hello {{testVariable}}! 
+	
+
+	
+	<!-- 
+		If we need parent to be updated, we can work through objects and it will work as both are pointing to same memory
+		<div>
+			Parent: <input type="text" ng-model="person.name"/>
+			<div ng-if="true">
+				<br/>
+				Child: <input type="text" ng-model="person.name"/>
+			</div>
+		</div> 
+		Hello {{person.name}}!
+	-->
+	
+	<br/>
+
+	<!-- 
+	Another workaround, work with $parent when working inside child scope
+	<div>
+		parent: <input type="text" ng-model="testVariable"/>
+		<div ng-if="true">
+			<br/>
+			child: <input type="text" ng-model="$parent.testVariable"/>
+		</div>
+	</div> 
+	<br/>
+	Hello {{testVariable}}!
+	-->
+	
+	
+ 
+	
+	
+	<script type="text/javascript" src="angular.js"></script>
+	<script type="text/javascript" src="app.js"></script>
+</body>
+</html>
+

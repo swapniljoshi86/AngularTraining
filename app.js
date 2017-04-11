@@ -17,7 +17,7 @@ app.controller('sampleController',['$scope',function($scope){
 						{"name": "Malhar","mother": "Mohini" },
 						{"name": "Pranav","mother": "Kalpana" },
 						{"name": "Ketaki","mother": "Payal" }
-					];
+						];
 
 	$scope.person = {"name" : "Shilpa Joshi"};
 
@@ -46,10 +46,24 @@ app.controller('sampleController',['$scope',function($scope){
 	 });
 }]);
 
+app.controller('filterController',['$scope','$filter',function($scope,$filter){
+	$scope.kids = [
+						{"name": "Ashmi","mother": "Shilpa" },
+						{"name": "Malhar","mother": "Mohini" },
+						{"name": "Pranav","mother": "Kalpana" },
+						{"name": "Ketaki","mother": "Payal" }
+						];
+
+	$scope.fileName = $filter('trimName')('loon.txt');
+	//$scope.searchText = "mo";
+	//$scope.kids = $filter('customSearch')($scope.kids,$scope.searchText);
+}]);
+
 app.filter("trimName",function()
 {
 	return function(input)
 	{
+		console.log("file filter called");
 		var fileName = input;
 		var dotIndex = fileName.indexOf('.');
 		var firstPart = fileName.substring(0,dotIndex);
@@ -61,5 +75,26 @@ app.filter("trimName",function()
 		}
 
 		return fileName;
+	}
+});
+
+app.filter("customSearch",function()
+{
+	return function(data,searchText)
+	{
+		console.log("custom search filter called");
+		var output = [];
+		if(!searchText)
+		{
+			return data;
+		}
+		for(i=0;i<data.length;i++)
+		{
+			if(data[i].mother.toLowerCase().indexOf(searchText) !== -1)
+			{
+				output.push(data[i]);
+			}
+		}
+		return output;
 	}
 });

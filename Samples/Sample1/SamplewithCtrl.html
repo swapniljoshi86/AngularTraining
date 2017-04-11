@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+            <title>AngularJS Bootstrap</title>
+    </head>
+    <body>
+        
+		<input type="textbox" ng-model="name"></div>
+		
+		<div>{{name}}</div>
+		
+		<div ng-controller="firstCtrl">
+			<!-- By button call -->
+			<button ng-click="clickMe();">Click me</button> 
+			<div ng-show="clickme">This is click me function call</div> 
+			
+			<!-- with checkbox -->
+			 <input type="checkbox" ng-model="checkBoxFlag">
+			
+			 <div ng-show="checkBoxFlag">Hi this is checkbox</div> 
+			
+			 <!-- <div ng-show="showFlag">Show me </div> -->
+		</div>
+
+    </body>
+	
+	<script src="angular.js"></script>
+	
+	<script src="app.js"></script>
+	
+	<!-- <script> -->
+			<!-- var app = angular.module('myApp', []); -->
+			
+			<!-- angular.element(document).ready(function() { -->
+				<!-- angular.bootstrap(document, ['myApp']); -->
+			<!-- }); -->
+			
+			<!-- app.controller('firstCtrl',['$scope',function($scope){ -->
+				<!-- $scope.showFlag = true; -->
+				
+				<!-- $scope.clickme =function(){ -->
+					<!-- $scope.clickme = true; -->
+				<!-- }; -->
+				
+			<!-- }]); -->
+	<!-- </script> -->
+</html>

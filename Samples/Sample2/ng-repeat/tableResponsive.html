@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="angular.js"></script> 
+</head>
+<body ng-app="myApp">
+
+<div class="container">
+  <div class="table-responsive" ng-controller="myCtrl">          
+  <table class="table"> 
+    <thead>
+      <tr>
+        <th>EmpID</th>
+		<th>FirstName</th>
+		<th>LastName</th>
+		<th>Address</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="record in records">
+        <td>{{record.empID}}</td>
+		<td>{{record.firstname}}</td>
+		<td>{{record.lastname}}</td>
+		<td>{{record.address}}</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</div>
+
+<script>
+var app = angular.module("myApp", []);
+app.controller("myCtrl", function($scope) {
+  $scope.records = [{"empID":"123","firstname":"ABC","lastname":"XYZ","address":"Hinjewadi"},
+					{"empID":"456","firstname":"ABC","lastname":"XYZ","address":"Hinjewadi"},
+					{"empID":"879","firstname":"ABC","lastname":"XYZ","address":"Hinjewadi"},
+					{"empID":"098","firstname":"ABC","lastname":"XYZ","address":"Hinjewadi"},
+					{"empID":"432","firstname":"ABC","lastname":"XYZ","address":"Hinjewadi"}
+  ]
+});
+</script>
+
+</body>
+</html>

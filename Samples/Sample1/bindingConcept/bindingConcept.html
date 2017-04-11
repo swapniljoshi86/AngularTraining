@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html ng-app="firstApp">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body ng-controller="bindingConcept">
+	<h1 style="color:blue">One way binding</h1>
+
+	<h2>A One way data binding can be specified in two different ways:
+	1.)with curly braces: {{expression}}
+	2.)with the ng-bind directive: ng-bind="varName"
+	</h2>
+
+	Demo.1)One way Binding using expression  - {{varName}}
+
+	</br>Demo.2)One way binding using ng-bind - 
+
+	<div ng-bind="varName">Replace this</div>
+	
+	<!-- <div ng-bind="{{varName}}">Replace this</div> -->
+
+	<h1 style="color:green">Handling of ng-init</h1>
+
+	<div ng-init = "varname = 'shubham'"></div>
+	<div>Displaying using expression  - -  {{varname}}</div>
+
+	<div ng-bind="varname">Replace this</div>
+
+	<div ng-init="init()">{{a}}</div>
+	
+	{{init()}}
+	
+	<h1 style="color:yellow">Two way binding</h1>
+
+	<div ng-init="firstName = 'Shubham'; lastName = 'Sharma';">
+	  <strong>First name:</strong> {{firstName}}<br />
+	  <strong>Last name:</strong> <span ng-bind="lastName"></span><br/>
+	  <br />
+	  <label>Set the first name: <input type="text" ng-model="firstName"/></label><br />
+	  <label>Set the last name: <input type="text" ng-model="lastName"/></label>
+	</div>
+
+
+	<script src="angular.js"></script>
+	<script src="app.js"></script>
+
+</body>
+</html>

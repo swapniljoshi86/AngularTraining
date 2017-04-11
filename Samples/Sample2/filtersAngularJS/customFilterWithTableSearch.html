@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html ng-app="firstApp">
+<head>
+	<!-- odd even using css properties-->
+	<style>
+		table, th , td  {
+		  border: 1px solid grey;
+		  border-collapse: collapse;
+		  padding: 5px;
+		}
+		table tr:nth-child(odd) {
+		  background-color: #f1f1f1;
+		}
+		table tr:nth-child(even) {
+		  background-color: #ffffff;
+		}
+	</style>
+	
+	<script src="angular.js"></script>
+	<script src="app.js"></script>
+	
+</head>
+
+<body ng-controller="normalSearchCtrl">
+
+	<h1>Table with Normal search</h1>
+
+	<div ng-show="!(normalSearchData|filter:normalsearch).length">No Employees found</div>
+
+	<table>
+		
+		<tr>
+			<input type="text" id="searchBox" ng-model="normalsearch" placeholder="Search EMP ID HERE">
+		</tr>
+		
+		<tr>	
+			<th>Ser.No</th>
+			<th>EmpID</th>
+			<th>FirstName</th>
+			<th>LastName</th>
+		</tr>	
+			
+		<tr ng-repeat="rec in normalSearchData|filter:normalsearch">
+			<td>{{$index+1}}</td>
+			<td>{{rec.empID}}</td>
+			<td>{{rec.firstname}}</td>
+			<td>{{rec.lastname}}</td>
+		</tr>
+		
+	</table>
+
+</body>
+</html>

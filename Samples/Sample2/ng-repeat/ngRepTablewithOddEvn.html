@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<script src="angular.js"></script>
+
+<body ng-app="myApp">
+
+<div ng-controller="myCtrl">
+<table>
+	<tr>
+		<th>Ser.No</th>
+		<th>EmpID</th>
+		<th>FirstName</th>
+		<th>LastName</th>
+		<th>Address</th>
+	</tr>
+	
+	<tr ng-repeat="record in records">
+		<td ng-if="$odd" style="background-color:grey">{{$index+1}}</td>
+		<td ng-if="$even" style="background-color:lightgreen">{{record.empID}}</td>
+		<td ng-if="$odd" style="background-color:lightBlue">{{record.firstname}}</td>
+		<td ng-if="$odd" style="background-color:red">{{record.lastname}}</td>
+		<td ng-if="$odd" style="background-color:yellow">{{record.address}}</td>
+	</tr>
+</table>
+</div>
+<script>
+var app = angular.module("myApp", []);
+app.controller("myCtrl", function($scope) {
+  $scope.records = [{"empID":"123","firstname":"ABC","lastname":"XYZ","address":"Hinjewadi"},
+					{"empID":"456","firstname":"ABC","lastname":"XYZ","address":"Hinjewadi"},
+					{"empID":"879","firstname":"ABC","lastname":"XYZ","address":"Hinjewadi"},
+					{"empID":"098","firstname":"ABC","lastname":"XYZ","address":"Hinjewadi"},
+					{"empID":"432","firstname":"ABC","lastname":"XYZ","address":"Hinjewadi"}
+  ]
+});
+</script>
+
+</body>
+</html>

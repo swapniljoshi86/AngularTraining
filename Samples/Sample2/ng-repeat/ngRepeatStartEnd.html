@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html ng-app="firstApp">
+<head>
+	
+</head>
+
+<body ng-controller="TablePageCtrl">
+<div class="col-lg-6">
+       <div class="panel panel-default">
+            <div class="panel-body">
+				<table class="table table-condensed" style="border-collapse:collapse;">
+				    <thead>
+				        <tr><th><input type="checkbox" ng-model="selectedAll" ng-click="checkAll()" /></th>
+				            <th>Class Name</th>
+				            <th>Description</th>
+				            <th>Shubham Sharma</th>
+				            <th>Value</th>
+				            <th>Status</th>
+				        </tr>
+				    </thead>
+					
+					
+						
+    				<tbody>
+					        <tr ng-repeat-start="assetDetail in Classes">
+					            <td><input type="text" ng-model="searchfilter"></td>
+					            <td>{{assetDetail.assetClassType}}</td>
+					            <td>
+					            	<button ng-if="assetDetail.expanded" ng-click="assetDetail.expanded = false">-</button>
+              						<button ng-if="!assetDetail.expanded" ng-click="assetDetail.expanded = true">+</button>
+					            </td> 
+					        </tr>
+					        <tr ng-if="assetDetail.expanded" ng-repeat-end="">
+					            <td colspan="12">
+						            <div > 
+						              <table class="table table-striped"> 
+						                      <tbody>
+						                        <tr ng-repeat-start="it in assetDetail.assetClassList|filter:searchfilter">
+						                        	<td><input type="checkbox" ng-model="it.Selected" ng-click="selectedAssetClass(assetDetail.assetClassType,it.assetClassName);"/></td>
+						                        	<td>{{it.assetClassName}}</td>
+						                        	<td>{{it.currency}}</td>
+						                        	<td>{{it.Frequency}}</td>
+						                        	<td>{{it.fxhedge}}</td>
+						                        	
+						                        	
+						                  		</tr>
+						                  		<tr ng-repeat-end=""></tr>
+						                      </tbody>
+						               	</table>
+						              
+						              </div> 
+						         </td>
+					        </tr>
+   					</tbody>
+				</table>
+            </div>
+          </div> 
+      </div>
+</body>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="angular.js"></script>
+
+<script>
+
+var app = angular.module("firstApp",[]);
+
+app.controller('TablePageCtrl',['$scope', function UserCtrl($scope) {
+                           
+	 						$scope.expanded=true;
+	 						
+                          $scope.Classes = [{
+                        	  
+                        	  "assetClassType":"Cash Short Term",
+                        	  "assetClassList":[{
+                        		  	"assetClassName":"Technical",
+                        		  	"currency":"USD",
+                        		  	"Frequency":12,
+                        		  	"fxhedge":"12%"
+                        	  },
+                        	  {
+                      		  	"assetClassName":"Technical",
+                      		  	"currency":"USD",
+                      		  	"Frequency":15,
+                      		  	"fxhedge":"15%"
+                        	  },
+                        	  {
+	                  		  	"assetClassName":"Technical",
+	                  		  	"currency":"USD",
+	                  		  	"Frequency":17,
+	                  		  	"fxhedge":"17%"
+                        	  }]
+                          },
+                          
+                          {  
+                        	  "assetClassType":"Long Term",
+                        	  "assetClassList":[{
+                        		  	"assetClassName":"Non Technical",
+                        		  	"currency":"CHF",
+                        		  	"Frequency":20,
+                        		  	"fxhedge":"12%"
+                        	  },
+                        	  {
+                      		  	"assetClassName":"Non Technical",
+                      		  	"currency":"CHF",
+                      		  	"Frequency":18,
+                      		  	"fxhedge":"12%"
+                      	  },
+                      	  {
+                  		  	"assetClassName":"Non Technical",
+                  		  	"currency":"CHF",
+                  		  	"Frequency":19,
+                  		  	"fxhedge":"12%"
+                      	  }]
+                        	  
+                          }]; 
+                          
+                         
+                          
+                         $scope.checkAll =function(){
+                        	 
+                        	 if($scope.selectedAll)
+                        	{
+                        		 $scope.selectedAll=false;
+                        	}
+                        	 else
+                        	{
+                        		 	$scope.selectedAll=true;
+                        	}
+                        	 
+                        	angular.forEach($scope.Classes, function (d) {
+                                 //item.Selected = $scope.selectedAll;
+                        		
+                        		//console.log(d);
+                        		
+                        		angular.forEach(d.assetClassList,function(e){
+                        			e.Selected = $scope.selectedAll;
+                        			//console.log(e);
+                        		});
+                        		
+                             });
+                        	 
+                         };
+                         
+                         $scope.selectedAssetClass=function(AssetClassCategory,AssetClassName)
+                         {
+                        	 console.log(AssetClassCategory +"  "+ AssetClassName);
+                         };
+                          
+                          
+                          
+}]);
+
+
+</script>
+
+</html>

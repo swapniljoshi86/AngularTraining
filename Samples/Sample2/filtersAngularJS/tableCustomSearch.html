@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html ng-app="firstApp">
+<head>
+	<!-- odd even using css properties-->
+	<style>
+		table, th , td  {
+		  border: 1px solid grey;
+		  border-collapse: collapse;
+		  padding: 5px;
+		}
+		table tr:nth-child(odd) {
+		  background-color: #f1f1f1;
+		}
+		table tr:nth-child(even) {
+		  background-color: #ffffff;
+		}
+	</style>
+	
+	<script src="angular.js"></script>
+	<script src="app.js"></script>
+	
+</head>
+
+<body ng-controller="normalSearchCtrl">
+
+	<h1>Table with custom search</h1>
+	<br>
+	<div>
+		<input type="text" id="searchBox" ng-model="searchEmpID" placeholder="Search EMP ID HERE">
+		<input type="text" id="lastname" ng-model="searchLastname" placeholder="Search Last name HERE">
+	</div>
+
+	<div ng-show="!(records| customSearch:searchEmpID:searchLastname).length">No Students Found</div>
+
+	<table>
+		<tr>
+			<th>Ser.No</th>
+			<th>EmpID</th>
+			<th>FirstName</th>
+			<th>LastName</th>
+			<th>Address</th>
+		</tr>	
+			
+		<tr ng-repeat="record in records| customSearch:searchEmpID:searchLastname">
+			<td>{{$index+1}}</td>
+			<td>{{record.empID}}</td>
+			<td>{{record.firstname}}</td>
+			<td>{{record.lastname}}</td>
+			<td>{{record.address}}</td>
+		</tr>
+		
+	</table>
+
+</body>
+</html>

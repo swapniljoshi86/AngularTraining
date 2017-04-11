@@ -1,0 +1,40 @@
+ <!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+            <title>$watch $digest $apply Example</title>
+    </head>
+	<body ng-app="myApp">
+    
+		<!-- Simple Example -->
+		
+		<div ng-controller="myController">
+			<h1>How model is getting changed</h1>
+			<div>
+				<input type="textbox" ng-model="name">
+			</div>
+			
+			
+			<br><br>
+			
+			<h1>Updating view With Event</h1>
+			
+			{{data}}
+
+			{{data1}}
+			
+			<br/>
+			<button ng-click="updateView()">update time - ng-click</button>
+			<button id="updateVButton"  >update time</button>
+			<button id="updateVButton1"  >update time</button>
+			
+			
+		</div>
+		
+		
+		
+
+		<script src="angular.js"></script>
+		<script src="app.js"></script>
+    </body>
+</html>

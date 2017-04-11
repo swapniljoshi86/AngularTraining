@@ -1,0 +1,48 @@
+ <!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+            <title>AngularJS ng-If Example</title>
+    </head>
+    <body>
+     <div ng-controller="checkCtrl">  
+			<input type="checkbox" ng-model="checked">
+			
+			<div ng-show="checked"> Check Box checked</div>
+			
+			<div ng-if="checked">With Ng-if</div>
+			
+			<!-- Condition 1  -->
+			
+			<!--  <input type="text" ng-model="data"> 
+			
+			 {{data}}
+			
+			 <div ng-if="true"> 
+			 <input type="text" ng-model="data"> 
+				
+			</div>   -->
+			
+			<!-- Condition 2  -->
+			
+			<!-- <input type="text" ng-model="obj.data"> 
+			{{obj.data}}
+			 <div ng-if="true"> 
+			    <input type="text" ng-model="obj.data"> 	
+			</div> -->
+			
+			<!-- Condition 3 -->
+			
+			<!-- <input type="text" ng-model="data">
+			{{data}}
+			<div ng-if="true">
+				<input type="text" ng-model="$parent.data">
+			</div> -->
+			
+			
+	 </div>
+	 
+	 <script src="angular.js"></script>
+	 <script src="app.js"></script>
+    </body>
+</html>

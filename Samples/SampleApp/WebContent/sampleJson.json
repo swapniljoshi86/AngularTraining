@@ -1,0 +1,10 @@
+{
+    "employeeRecords": [
+            {"empID":"123","firstname":"ABC","lastname":"XYZ","address":"Hinjewadi"},
+			{"empID":"456","firstname":"XYZ","lastname":"MNO","address":"asdasda"},
+			{"empID":"345","firstname":"XYZ","lastname":"MNO","address":"asdasda"},
+			{"empID":"098","firstname":"XYZ","lastname":"MNO","address":"asdasda"},
+			{"empID":"768","firstname":"XYZ","lastname":"MNO","address":"asdasda"},
+			{"empID":"987","firstname":"XYZ","lastname":"MNO","address":"asdasda"}
+    ]
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<script src="angular.js"></script>
+<body>
+
+<div ng-app="firstApp" ng-controller="nCtrl">
+
+	<h1>Date Filter Example</h1>
+
+	<h2>{{myDate}}</h1>
+	
+	
+	
+	<h2>{{myDate | date}}</h1>
+	<h3> Default format is "MMM d, y" </h3>
+	
+	<h2>{{myDate | date : "dd.MM.y"}}</h2>
+	
+	<h2>{{myDate | date : "dd/MM/y"}}</h2>
+	
+	<h2>{{myDate | date : "fullDate" }}</h2>
+	
+	<h1>Date Filter with String date</h1>
+	{{formatDatee | date : "dd.MM.y"}}
+	<br>
+	{{formatDatee | date : "dd/MM/y"}}
+</div>
+
+<script>
+var app = angular.module('firstApp', []);
+app.controller('nCtrl', function($scope) {
+    $scope.myDate = new Date();
+	
+	//date coming from backend in form "2015-03-25"
+	
+	var backendDate = "2015-03-25";
+	
+	$scope.formatDatee = new Date(backendDate);
+	
+	
+	
+	
+});
+</script>
+
+</body>
+</html>

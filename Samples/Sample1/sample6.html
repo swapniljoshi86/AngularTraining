@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<style>
+		.ng-invalid {
+		  border-color: red;
+		  border-width: 2px;
+		}
+		.ng-valid {
+		  border-color: green;
+		  border-width: 2px;
+		}
+	</style>
+</head>
+<script src="angular.js"></script>
+<body>
+
+<div ng-app="myApp">
+<form name="userForm">
+	
+	<div ng-controller="numberCtrl">
+		Enter Value : <input type="text" name="numberField" number-only ng-model="numberField">
+		<p ng-show="userForm.numberField.$pristine">Input Required</span>
+		<p ng-show="userForm.numberField.$dirty && userForm.numberField.$error.grtrThan3">Number should be between 0 to 100</span>
+		<p ng-show="userForm.numberField.$dirty && userForm.numberField.$error.notNumber">Should be a number</span>
+	</div>
+	
+</form>
+</div>
+<script>
+
+var app=angular.module("myApp",[]);
+
+app.controller("numberCtrl",['$scope',function($scope){
+	 $scope.numberField = null; 
+	 console.log("value in field is "+$scope.numberField); 
+}]);
+
+app.directive('numberOnly', function () {
+    return {
+        require: 'ngModel',
+		restrict:'EAC',
+		scope:{},
+        link: function (scope, element, attr, ngModelCtrl) {
+			function fromUser(text) {
+				var per = "%";
+                if (text.length<3) {
+					var transformedInput = text.replace(/[^1-9]/g, '');
+					if (transformedInput !== text) {
+							ngModelCtrl.$validators.notNumber = function (modelValue, viewValue){
+								if (isNaN(viewValue)) {
+								  return true
+								}
+								return false;
+							 };
+							ngModelCtrl.$setViewValue(transformedInput);
+							ngModelCtrl.$render();
+					}
+                    return transformedInput;
+                }
+				else{
+					var emptyStr = text.substring(0,2);
+					
+					ngModelCtrl.$validators.grtrThan3 = function (modelValue, viewValue){
+						if (viewValue.length >3) {
+						  return true
+						}
+						return false;
+					 };
+					
+					ngModelCtrl.$setViewValue(emptyStr);
+					ngModelCtrl.$render();
+					return emptyStr;
+				}
+                return undefined;
+            }
+            ngModelCtrl.$parsers.push(fromUser);
+        }
+    };
+});
+
+</script>
+</body>
+</html>

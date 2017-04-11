@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<script src="angular.js"></script>
+<!-- <script src="filters.js"></script> -->
+<body>
+
+<div ng-app="myApp" ng-controller="nCtrl">
+
+<h2>First Custom Filter</h2>
+	
+	<div>Normal FileName - {{fileName}}</div>
+	<div>Trimmed FileName - {{fileName|trimName}}</div>
+	<div>Filter inside Controller FileName - {{filterInsideControllerVar}}</div>
+	
+	
+</div>
+
+<script>
+var app = angular.module('myApp', []);
+
+app.controller('nCtrl', ['$scope','$filter',function($scope,$filter) {
+	   
+	$scope.fileName = "UploadedExcelFile.xls";
+	
+	$scope.filterInsideControllerVar = $filter('trimName')($scope.fileName);
+	
+}]);
+
+app.filter('trimName', function() {
+	return function(input){
+	var trimedfilename="";
+	var filename=input;
+	var index = filename.indexOf(".");
+	   var first=filename.substring(0,index);
+	   var second=filename.substring(index,filename.length);
+	   if(first.length>10)
+	   {
+		   	trimedfilename=first.slice(0,10)+"..."+second;
+	   }
+	   else 
+	   {
+		   trimedfilename=first.concat(second);
+	   }
+	   
+	   return trimedfilename;
+	};
+});
+
+
+
+</script>
+
+</body>
+</html>

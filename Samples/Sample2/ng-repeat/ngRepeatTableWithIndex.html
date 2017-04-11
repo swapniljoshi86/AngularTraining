@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- odd even using css properties-->
+	<style>
+		table, th , td  {
+		  border: 1px solid grey;
+		  border-collapse: collapse;
+		  padding: 5px;
+		}
+		table tr:nth-child(odd) {
+		  background-color: #f1f1f1;
+		}
+		table tr:nth-child(even) {
+		  background-color: #ffffff;
+		}
+	</style>
+</head>
+<script src="angular.js"></script>
+
+<body ng-app="myApp">
+
+<div ng-controller="myCtrl">
+<table>
+	<tr>
+		<th>Ser.No</th>
+		<th>EmpID</th>
+		<th>FirstName</th>
+		<th>LastName</th>
+		<th>Address</th>
+	</tr>
+	
+	<tr ng-repeat="record in records">
+		<td>{{$index+1}}</td>
+		<td>{{record.empID}}</td>
+		<td>{{record.firstname}}</td>
+		<td>{{record.lastname}}</td>
+		<td>{{record.address}}</td>
+	</tr>
+</table>
+
+{{$index}}
+
+</div>
+<script>
+var app = angular.module("myApp", []);
+app.controller("myCtrl", function($scope) {
+  $scope.records = [{"empID":"123","firstname":"ABC","lastname":"XYZ","address":"Hinjewadi"},
+					{"empID":"456","firstname":"ABC","lastname":"XYZ","address":"Hinjewadi"},
+					{"empID":"879","firstname":"ABC","lastname":"XYZ","address":"Hinjewadi"},
+					{"empID":"098","firstname":"ABC","lastname":"XYZ","address":"Hinjewadi"},
+					{"empID":"432","firstname":"ABC","lastname":"XYZ","address":"Hinjewadi"}
+  ]
+});
+</script>
+
+</body>
+</html>

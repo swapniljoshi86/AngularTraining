@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<script src="angular.js"></script>
+<body>
+
+<div ng-app="myApp" ng-controller="nCtrl">
+
+<h2>Formatting string value in number format</h2>
+
+<h1>{{prize | number}}</h1>
+
+
+<!-- if we want to show upto some decimal places then -->
+
+</br></br></br></br>
+<h2>With decimal places </h2>
+<h1>{{prize | number: 3}}</h1>
+
+</div>
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('nCtrl', function($scope) {
+    $scope.prize = 1000000;
+});
+</script>
+
+</body>
+</html>

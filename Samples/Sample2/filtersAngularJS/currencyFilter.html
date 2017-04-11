@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<script src="angular.js"></script>
+<body>
+
+<div ng-app="myApp" ng-controller="costCtrl">
+
+<p>This filter formats any number to a currency format</p>
+
+ Default currency format is system locale.
+
+<p>Price = {{ price | currency }}</p>
+
+<!-- display currency using user choice -->
+
+<p>Price = {{ price | currency:"GBP" }}</p>
+
+<p>Price = {{ price | currency:"Rupee "}}</p>
+
+</div>
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('costCtrl', function($scope) {
+    $scope.price = 9.99;
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+	<h1>{{welcomeMessage}}</h1>
+	
+	<h2>Add Records</h2>
+	<input type="text" name="empID" ng-model="newUser.empID" read-only>
+	<input type="text" name="firstname" ng-model="newUser.firstname">
+	<input type="text" name="lastname" ng-model="newUser.lastname">
+	<input type="text" name="address" ng-model="newUser.address">
+	<input type="button" ng-click="addRecords(newUser);" value="AddEmployee" ng-disabled="disableAddEmployee">
+	
+	
+	
+	<input type="button" ng-click="updateRecords(newUser);" value="UpdateEmployee" ng-show="inUpdateMode">
+	
+	<h2>Employees Records</h2>
+	<table>
+	
+	<tr>	
+		<th>Ser.No</th>
+		<th>EmpID</th>
+		<th>FirstName</th>
+		<th>LastName</th>
+		<th>Address</th>
+		<th>Action</th>
+	</tr>	
+		
+	<tr ng-repeat="rec in records">
+		<td>{{$index+1}}</td>
+		<td>{{rec.empID}}</td>
+		<td>{{rec.firstname}}</td>
+		<td>{{rec.lastname}}</td>
+		<td>{{rec.address}}</td>
+		<td><input type="button" value="Remove" class="btn btn-primary" ng-click="deleteRecords(rec.empID);"/>&nbsp<a href="" ng-click="editRecords(rec.empID);">Edit</a></td>
+	</tr>
+	
+</table>
+	
+	
+	
+	
+</body>
+</html>

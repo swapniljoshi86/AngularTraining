@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<h1>Sample Http Call</h1>
+
+<table>
+	
+	<tr>	
+		<th>Ser.No</th>
+		<th>EmpID</th>
+		<th>FirstName</th>
+		<th>LastName</th>
+	</tr>	
+		
+	<tr ng-repeat="rec in EmpRecords">
+		<td>{{$index+1}}</td>
+		<td>{{rec.empID}}</td>
+		<td>{{rec.firstname}}</td>
+		<td>{{rec.lastname}}</td>
+	</tr>
+	
+</table>
+
+</body>
+</html>
